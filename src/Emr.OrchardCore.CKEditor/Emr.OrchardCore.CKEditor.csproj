@@ -1,0 +1,39 @@
+<Project Sdk="Microsoft.NET.Sdk.Razor">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <AddRazorSupportForMvc>true</AddRazorSupportForMvc>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Version>1.5.0</Version>
+    <PackageId>Emr.OrchardCore.CKEditor</PackageId>
+    <Title>CKEditor for OrchadCore</Title>
+    <Authors>Emrah Tokalak</Authors>
+    <Description>CKEditor implemantation of OrchardCore</Description>
+    <PackageTags>orchardcore;ckeditor</PackageTags>
+    <RepositoryUrl>https://github.com/emrahtokalak/Emr.OrchardCore.CKEditor</RepositoryUrl>
+    <PackageProjectUrl>https://github.com/emrahtokalak/Emr.OrchardCore.CKEditor</PackageProjectUrl>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="docs\**" />
+    <EmbeddedResource Remove="docs\**" />
+    <None Remove="docs\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="OrchardCore.ContentManagement" Version="1.5.0" />
+    <PackageReference Include="OrchardCore.ContentManagement.Display" Version="1.5.0" />
+    <PackageReference Include="OrchardCore.ContentTypes" Version="1.5.0" />
+    <PackageReference Include="OrchardCore.DisplayManagement" Version="1.5.0" />
+    <PackageReference Include="OrchardCore.Indexing.Abstractions" Version="1.5.0" />
+    <PackageReference Include="OrchardCore.Search.Lucene" Version="1.5.0" />
+    <PackageReference Include="OrchardCore.Navigation" Version="1.5.0" />
+    <PackageReference Include="OrchardCore.Queries.Abstractions" Version="1.5.0" />
+    <PackageReference Include="OrchardCore.ResourceManagement" Version="1.5.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <FrameworkReference Include="Microsoft.AspNetCore.App" />
+  </ItemGroup>
+
+</Project>

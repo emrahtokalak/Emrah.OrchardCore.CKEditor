@@ -1,0 +1,35 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "dotnet build (debug) - net6.0",
+            "type": "shell",
+            "command": "dotnet",
+            "args": [
+                "build",
+                "${workspaceFolder}/samples/Emr.OrchardCore.Cms.Web",
+                "-c",
+                "Debug",
+                "-f",
+                "net6.0"
+            ],
+            "problemMatcher": "$msCompile"
+        },
+        {
+            "label": "dotnet build (release) - net6.0",
+            "type": "shell",
+            "command": "dotnet",
+            "args": [
+                "build",
+                "${workspaceFolder}/samples/Emr.OrchardCore.Cms.Web",
+                "-c",
+                "Release",
+                "-f",
+                "net6.0"
+            ],
+            "problemMatcher": "$msCompile"
+        }
+    ]
+}

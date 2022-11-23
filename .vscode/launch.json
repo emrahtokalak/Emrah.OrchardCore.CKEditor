@@ -1,0 +1,44 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": ".NET Core Launch (console debug) - net6.0",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "dotnet build (debug) - net6.0",
+            "program": "${workspaceFolder}/samples/Emr.OrchardCore.Cms.Web/bin/Debug/net6.0/Emr.OrchardCore.Cms.Web.dll",
+            "args": [],
+            "cwd": "${workspaceFolder}/samples/Emr.OrchardCore.Cms.Web",
+            "env": {
+                "ASPNETCORE_ENVIRONMENT": "Development"
+            },
+            "stopAtEntry": false
+        },
+        {
+            "name": ".NET Core Launch (web release) - net6.0",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "dotnet build (release) - net6.0",
+            "program": "${workspaceFolder}/samples/Emr.OrchardCore.Cms.Web/bin/Release/net6.0/Emr.OrchardCore.Cms.Web.dll",
+            "args": [],
+            "cwd": "${workspaceFolder}/samples/Emr.OrchardCore.Cms.Web",
+            "env": {
+                "ASPNETCORE_ENVIRONMENT": "Production"
+            },
+            "stopAtEntry": false,
+            "serverReadyAction": {
+                "action": "openExternally",
+                "pattern": "\\bNow listening on:\\s+(http?://\\S+)"
+            }
+        },
+        {
+            "name": ".NET Core Attach",
+            "type": "coreclr",
+            "request": "attach",
+            "processId": "${command:pickProcess}"
+        }
+    ]
+}
