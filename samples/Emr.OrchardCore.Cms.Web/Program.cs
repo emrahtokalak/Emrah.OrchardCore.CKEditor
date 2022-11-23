@@ -33,5 +33,7 @@ app.UseSerilogRequestLogging();
 
 app.UseStaticFiles();
 
+app.UseOrchardCore(c => c.UseSerilogTenantNameLogging());
+
 app.Run();
 
