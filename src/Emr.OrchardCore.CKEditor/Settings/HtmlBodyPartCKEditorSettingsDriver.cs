@@ -13,14 +13,14 @@ using OrchardCore.Html.Models;
 
 namespace Emr.OrchardCore.CKEditor.Settings
 {
-    public class HtmlBodyPartCKEditorClassicSettingsDriver : ContentTypePartDefinitionDisplayDriver
+    public class HtmlBodyPartCKEditorSettingsDriver : ContentTypePartDefinitionDisplayDriver
     {
         private readonly CKEditorConfigurationManager _manager;
         private readonly IStringLocalizer S;
 
-        public HtmlBodyPartCKEditorClassicSettingsDriver(
+        public HtmlBodyPartCKEditorSettingsDriver(
             CKEditorConfigurationManager manager,
-            IStringLocalizer<HtmlBodyPartCKEditorClassicSettingsDriver> localizer)
+            IStringLocalizer<HtmlBodyPartCKEditorSettingsDriver> localizer)
         {
             _manager = manager;
             S = localizer;
@@ -33,9 +33,9 @@ namespace Emr.OrchardCore.CKEditor.Settings
                 return null;
             }
 
-            return Initialize<HtmlBodyPartCKEditorClassicSettingsViewModel>("HtmlBodyPartCKEditorEditorClassicSettings_Edit", async model =>
+            return Initialize<HtmlBodyPartCKEditorSettingsViewModel>("HtmlBodyPartCKEditorEditorSettings_Edit", async model =>
             {
-                var settings = contentTypePartDefinition.GetSettings<HtmlBodyPartCKEditorClassicSettings>();
+                var settings = contentTypePartDefinition.GetSettings<HtmlBodyPartCKEditorSettings>();
 
                 var document = await _manager.GetDocumentAsync();
                 model.Configurations.Add(new SelectListItem { Text = S["Default Configuration"], Value = String.Empty });
@@ -55,10 +55,10 @@ namespace Emr.OrchardCore.CKEditor.Settings
                 return null;
             }
 
-            if (contentTypePartDefinition.Editor() == "CKEditorClassic")
+            if (contentTypePartDefinition.Editor() == "CKEditor")
             {
-                var model = new HtmlBodyPartCKEditorClassicSettingsViewModel();
-                var settings = new HtmlBodyPartCKEditorClassicSettings();
+                var model = new HtmlBodyPartCKEditorSettingsViewModel();
+                var settings = new HtmlBodyPartCKEditorSettings();
 
                 await context.Updater.TryUpdateModelAsync(model, Prefix, m => m.SelectedConfigurationName);
 

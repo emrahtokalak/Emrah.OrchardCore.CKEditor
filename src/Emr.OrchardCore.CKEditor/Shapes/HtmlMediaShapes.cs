@@ -11,7 +11,7 @@ namespace Emr.OrchardCore.CKEditor.Shapes
                 {
                     var editor = displaying.Shape;
 
-                    if (editor.Metadata.Type == "HtmlBodyPart_Edit__CKEditorClassic")
+                    if (editor.Metadata.Type == "HtmlBodyPart_Edit__CKEditor")
                     {
                         editor.Metadata.Wrappers.Add("Media_Wrapper__HtmlBodyPart");
                     }
@@ -22,7 +22,7 @@ namespace Emr.OrchardCore.CKEditor.Shapes
                 {
                     var editor = displaying.Shape;
 
-                    if (editor.Metadata.Type == "HtmlField_Edit__CKEditorClassic")
+                    if (editor.Metadata.Type == "HtmlField_Edit__CKEditor")
                     {
                         editor.Metadata.Wrappers.Add("Media_Wrapper__HtmlField");
                     }

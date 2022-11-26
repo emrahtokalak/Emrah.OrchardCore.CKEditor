@@ -1,9 +1,9 @@
 using OrchardCore.Modules.Manifest;
 
 [assembly: Module(
-    Name = "CKEditor",
+    Name = "CKEditor 5",
     Author = "Emrah Tokalak",
-    Description = "It allows you to manage your content and media with CKEditor.",
+    Description = "It allows you to manage your content and media with CKEditor 5.",
     Version = "1.0.0",
     Website = "http://emrahtokalak.com",
     Dependencies = new[] { "OrchardCore.ContentFields", "OrchardCore.Html" },

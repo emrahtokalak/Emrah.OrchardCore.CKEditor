@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace Emr.OrchardCore.CKEditor.ViewModels
 {
-    public class HtmlBodyPartCKEditorClassicSettingsViewModel
+    public class HtmlBodyPartCKEditorSettingsViewModel
     {
         public string SelectedConfigurationName { get; set; }
         [BindNever]

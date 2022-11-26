@@ -6,7 +6,7 @@
 
 @{
     var settings = Model.PartFieldDefinition.GetSettings<HtmlFieldSettings>();
-    var ckeditorSettings = Model.PartFieldDefinition.GetSettings<HtmlFieldCKEditorClassicSettings>();
+    var ckeditorSettings = Model.PartFieldDefinition.GetSettings<HtmlFieldCKEditorSettings>();
     string configuration = String.Empty;
     if (!String.IsNullOrEmpty(ckeditorSettings.ConfigurationName))
     {
@@ -20,8 +20,9 @@
     var culture = await Orchard.GetContentCultureAsync(Model.Field.ContentItem);
 }
 
-@* To override this with a custom build register a IResourceManifestProvider with the name ckeditorclassic and include it in your pipeline first? or last?*@
-<script asp-name="CKEditorClassic" asp-src="~/Emr.OrchardCore.CKEditor/scripts/ckeditor-classic-orchardcore/ckeditor.js" at="Foot" depends-on="admin"></script>
+@* To override this with a custom build register a IResourceManifestProvider with the name CKEditor and include it in your pipeline first? or last?*@
+<script asp-name="CKEditor" asp-src="~/Emr.OrchardCore.CKEditor/scripts/ckeditor5-custom-build-orchardcore/ckeditor.js" at="Foot" depends-on="admin"></script>
+
 
 @await DisplayAsync(await New.ShortcodeModal())
 

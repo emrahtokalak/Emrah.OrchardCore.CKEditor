@@ -7,7 +7,6 @@ using Microsoft.AspNetCore.Routing;
 using Microsoft.Extensions.Localization;
 using Newtonsoft.Json.Linq;
 using OrchardCore.DisplayManagement;
-using OrchardCore.DisplayManagement.Notify;
 using OrchardCore.Environment.Shell;
 using OrchardCore.Mvc.Utilities;
 using OrchardCore.Navigation;

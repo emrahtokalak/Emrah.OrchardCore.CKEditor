@@ -12,14 +12,14 @@ using OrchardCore.ContentFields.Fields;
 
 namespace Emr.OrchardCore.CKEditor.Settings
 {
-    public class HtmlFieldCKEditorClassicSettingsDriver : ContentPartFieldDefinitionDisplayDriver<HtmlField>
+    public class HtmlFieldCKEditorSettingsDriver : ContentPartFieldDefinitionDisplayDriver<HtmlField>
     {
         private readonly CKEditorConfigurationManager _manager;
         private readonly IStringLocalizer S;
 
-        public HtmlFieldCKEditorClassicSettingsDriver(
+        public HtmlFieldCKEditorSettingsDriver(
             CKEditorConfigurationManager manager,
-            IStringLocalizer<HtmlFieldCKEditorClassicSettingsDriver> localizer)
+            IStringLocalizer<HtmlFieldCKEditorSettingsDriver> localizer)
         {
             _manager = manager;
             S = localizer;
@@ -27,9 +27,9 @@ namespace Emr.OrchardCore.CKEditor.Settings
 
         public override IDisplayResult Edit(ContentPartFieldDefinition partFieldDefinition)
         {
-            return Initialize<HtmlFieldCKEditorClassicSettingsViewModel>("HtmlFieldCKEditorEditorClassicSettings_Edit", async model =>
+            return Initialize<HtmlFieldCKEditorSettingsViewModel>("HtmlFieldCKEditorEditorSettings_Edit", async model =>
             {
-                var settings = partFieldDefinition.GetSettings<HtmlFieldCKEditorClassicSettings>();
+                var settings = partFieldDefinition.GetSettings<HtmlFieldCKEditorSettings>();
 
                 var document = await _manager.GetDocumentAsync();
                 model.Configurations.Add(new SelectListItem { Text = S["Default Configuration"], Value = String.Empty });
@@ -44,10 +44,10 @@ namespace Emr.OrchardCore.CKEditor.Settings
 
         public override async Task<IDisplayResult> UpdateAsync(ContentPartFieldDefinition partFieldDefinition, UpdatePartFieldEditorContext context)
         {
-            if (partFieldDefinition.Editor() == "CKEditorClassic")
+            if (partFieldDefinition.Editor() == "CKEditor")
             {
-                var model = new HtmlFieldCKEditorClassicSettingsViewModel();
-                var settings = new HtmlFieldCKEditorClassicSettings();
+                var model = new HtmlFieldCKEditorSettingsViewModel();
+                var settings = new HtmlFieldCKEditorSettings();
 
                 await context.Updater.TryUpdateModelAsync(model, Prefix, m => m.SelectedConfigurationName);
 

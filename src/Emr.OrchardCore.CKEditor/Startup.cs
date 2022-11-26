@@ -36,8 +36,8 @@ namespace Emr.OrchardCore.CKEditor
                 .AddScoped<CKEditorConfigurationManager>()
                 .AddScoped<IPermissionProvider, Permissions>()
                 .AddScoped<INavigationProvider, AdminMenu>()
-                .AddScoped<IContentPartFieldDefinitionDisplayDriver, HtmlFieldCKEditorClassicSettingsDriver>()
-                .AddScoped<IContentTypePartDefinitionDisplayDriver, HtmlBodyPartCKEditorClassicSettingsDriver>()
+                .AddScoped<IContentPartFieldDefinitionDisplayDriver, HtmlFieldCKEditorSettingsDriver>()
+                .AddScoped<IContentTypePartDefinitionDisplayDriver, HtmlBodyPartCKEditorSettingsDriver>()
                 .AddRecipeExecutionStep<CKEditorConfigurationsStep>()
                 .Configure<CKEditorOptions>(o =>
                 {
