@@ -6,38 +6,29 @@ using Microsoft.Extensions.Localization;
 using OrchardCore.ContentManagement.Metadata.Models;
 using OrchardCore.ContentTypes.Editors;
 using OrchardCore.DisplayManagement.Views;
-using Emr.OrchardCore.CKEditor.Services;
 using Emr.OrchardCore.CKEditor.ViewModels;
 using OrchardCore.ContentFields.Fields;
+using OrchardCore.Mvc.Utilities;
 
 namespace Emr.OrchardCore.CKEditor.Settings
 {
     public class HtmlFieldCKEditorSettingsDriver : ContentPartFieldDefinitionDisplayDriver<HtmlField>
     {
-        private readonly CKEditorConfigurationManager _manager;
         private readonly IStringLocalizer S;
 
-        public HtmlFieldCKEditorSettingsDriver(
-            CKEditorConfigurationManager manager,
-            IStringLocalizer<HtmlFieldCKEditorSettingsDriver> localizer)
+        public HtmlFieldCKEditorSettingsDriver(IStringLocalizer<HtmlFieldCKEditorSettingsDriver> localizer)
         {
-            _manager = manager;
             S = localizer;
         }
 
         public override IDisplayResult Edit(ContentPartFieldDefinition partFieldDefinition)
         {
-            return Initialize<HtmlFieldCKEditorSettingsViewModel>("HtmlFieldCKEditorEditorSettings_Edit", async model =>
+            return Initialize<CKEditorSettingsViewModel>("HtmlFieldCKEditorEditorSettings_Edit", model =>
             {
-                var settings = partFieldDefinition.GetSettings<HtmlFieldCKEditorSettings>();
+                var settings = partFieldDefinition.GetSettings<HtmlBodyPartCKEditorSettings>();
 
-                var document = await _manager.GetDocumentAsync();
-                model.Configurations.Add(new SelectListItem { Text = S["Default Configuration"], Value = String.Empty });
-                model.Configurations.AddRange(document.Configurations.Keys.Select(x => new SelectListItem { Text = x, Value = x }).ToList());
-                if (!String.IsNullOrEmpty(settings.ConfigurationName) && document.Configurations.ContainsKey(settings.ConfigurationName))
-                {
-                    model.SelectedConfigurationName = settings.ConfigurationName;
-                }
+                model.Options = settings.Options;
+                model.InsertMediaWithUrl = settings.InsertMediaWithUrl;
             })
             .Location("Editor");
         }
@@ -46,14 +37,22 @@ namespace Emr.OrchardCore.CKEditor.Settings
         {
             if (partFieldDefinition.Editor() == "CKEditor")
             {
-                var model = new HtmlFieldCKEditorSettingsViewModel();
-                var settings = new HtmlFieldCKEditorSettings();
+                var model = new CKEditorSettingsViewModel();
+                var settings = new HtmlBodyPartCKEditorSettings();
 
-                await context.Updater.TryUpdateModelAsync(model, Prefix, m => m.SelectedConfigurationName);
+                await context.Updater.TryUpdateModelAsync(model, Prefix);
 
-                settings.ConfigurationName = model.SelectedConfigurationName;
+                if (!model.Options.IsJson())
+                {
+                    context.Updater.ModelState.AddModelError(Prefix + '.' + nameof(CKEditorSettingsViewModel.Options), S["The options are written in an incorrect format."]);
+                }
+                else
+                {
+                    settings.InsertMediaWithUrl = model.InsertMediaWithUrl;
+                    settings.Options = model.Options;
 
-                context.Builder.WithSettings(settings);
+                    context.Builder.WithSettings(settings);
+                }
             }
 
             return Edit(partFieldDefinition);

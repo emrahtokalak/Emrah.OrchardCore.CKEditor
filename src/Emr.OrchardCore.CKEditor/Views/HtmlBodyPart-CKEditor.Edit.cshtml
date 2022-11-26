@@ -1,46 +1,41 @@
 @model HtmlBodyPartViewModel
-@inject Emr.OrchardCore.CKEditor.Services.CKEditorConfigurationManager Manager
-
 @{
     var settings = Model.TypePartDefinition.GetSettings<HtmlBodyPartSettings>();
     var ckeditorSettings = Model.TypePartDefinition.GetSettings<HtmlBodyPartCKEditorSettings>();
-    string configuration = String.Empty;
-    if (!String.IsNullOrEmpty(ckeditorSettings.ConfigurationName))
-    {
-        var document = await Manager.GetDocumentAsync();
-        if(document.Configurations.TryGetValue(ckeditorSettings.ConfigurationName, out var ckEditorConfiguration))
-        {
-            configuration = ckEditorConfiguration.Configuration;
-        }
-
-    }        
-    var culture = await Orchard.GetContentCultureAsync(Model.ContentItem);
+    var culture = await Orchard.GetContentCultureAsync(Model.ContentItem) ?? CultureInfo.CurrentUICulture;
 }
 
-@* To override this with a custom build register a IResourceManifestProvider with the name CKEditor and include it in your pipeline first? or last?*@
-@* <script asp-name="CKEditor5" asp-src="~/Emr.OrchardCore.CKEditor/scripts/ckeditor-classic-orchardcore/ckeditor.js" at="Foot" depends-on="admin"></script> *@
-<script asp-name="CKEditor" asp-src="~/Emr.OrchardCore.CKEditor/scripts/ckeditor5-custom-build-orchardcore/ckeditor.js" at="Foot" depends-on="admin"></script>
 
+<script asp-name="CKEditor" asp-src="~/Emr.OrchardCore.CKEditor/scripts/ckeditor5-custom-build-orchardcore/ckeditor.js" at="Foot" depends-on="admin"></script>
 
 @await DisplayAsync(await New.ShortcodeModal())
 
-<div class="form-group">
+<div class="mb-3">
     <label asp-for="Html">@Model.TypePartDefinition.DisplayName()</label>
-    <textarea asp-for="Html" rows="5" class="form-control content-preview-text d-none" dir="@culture.GetLanguageDirection()"></textarea>
+    @if (culture.IsRightToLeft())
+    {
+        <div style="text-align:right">
+            <textarea asp-for="Html"></textarea>
+        </div>
+    }
+    else
+    {
+        <textarea asp-for="Html"></textarea>
+    }
     <span class="hint">@T["The body of the content item."]</span>
 </div>
 
 <script at="Foot" type="text/javascript">
+
     var optionsTextArea = document.getElementById('@Html.IdFor(x => x.Html)');
-    @* When part rendered by a flow part only the elements scripts are rendered, so the html element will not exist. *@
     if (optionsTextArea) {
         ClassicEditor
-            .create(optionsTextArea, @Html.Raw(configuration))
+            .create(optionsTextArea, @Html.Raw(ckeditorSettings.Options))
             .then(editor => {
-                editor.model.document.on( 'change:data', () => {
-                    @* Update the text area source element. *@
+                editor.model.document.on('change:data', () => {
+                 
                     editor.updateSourceElement();
-                    @* Then trigger render. *@
+                 
                     $(document).trigger('contentpreview:render');
                 })
             })

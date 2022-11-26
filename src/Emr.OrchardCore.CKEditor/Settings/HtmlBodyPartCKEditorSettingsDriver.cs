@@ -7,22 +7,21 @@ using OrchardCore.ContentManagement.Metadata.Models;
 using OrchardCore.ContentTypes.Editors;
 using OrchardCore.DisplayManagement.ModelBinding;
 using OrchardCore.DisplayManagement.Views;
-using Emr.OrchardCore.CKEditor.Services;
 using Emr.OrchardCore.CKEditor.ViewModels;
 using OrchardCore.Html.Models;
+using OrchardCore.Mvc.Utilities;
+using Newtonsoft.Json.Linq;
 
 namespace Emr.OrchardCore.CKEditor.Settings
 {
-    public class HtmlBodyPartCKEditorSettingsDriver : ContentTypePartDefinitionDisplayDriver
+    public class HtmlBodyPartCKEditorSettingsDriver : ContentTypePartDefinitionDisplayDriver<HtmlBodyPart>
     {
-        private readonly CKEditorConfigurationManager _manager;
+
         private readonly IStringLocalizer S;
 
         public HtmlBodyPartCKEditorSettingsDriver(
-            CKEditorConfigurationManager manager,
             IStringLocalizer<HtmlBodyPartCKEditorSettingsDriver> localizer)
         {
-            _manager = manager;
             S = localizer;
         }
 
@@ -33,19 +32,14 @@ namespace Emr.OrchardCore.CKEditor.Settings
                 return null;
             }
 
-            return Initialize<HtmlBodyPartCKEditorSettingsViewModel>("HtmlBodyPartCKEditorEditorSettings_Edit", async model =>
-            {
-                var settings = contentTypePartDefinition.GetSettings<HtmlBodyPartCKEditorSettings>();
+            return Initialize<CKEditorSettingsViewModel>("HtmlBodyPartCKEditorEditorSettings_Edit", model =>
+               {
+                   var settings = contentTypePartDefinition.GetSettings<HtmlBodyPartCKEditorSettings>();
 
-                var document = await _manager.GetDocumentAsync();
-                model.Configurations.Add(new SelectListItem { Text = S["Default Configuration"], Value = String.Empty });
-                model.Configurations.AddRange(document.Configurations.Keys.Select(x => new SelectListItem { Text = x, Value = x }).ToList());
-                if (!String.IsNullOrEmpty(settings.ConfigurationName) && document.Configurations.ContainsKey(settings.ConfigurationName))
-                {
-                    model.SelectedConfigurationName = settings.ConfigurationName;
-                }
-            })
-            .Location("Editor");
+                   model.Options = settings.Options;
+                   model.InsertMediaWithUrl = settings.InsertMediaWithUrl;
+               })
+               .Location("Editor");
         }
 
         public override async Task<IDisplayResult> UpdateAsync(ContentTypePartDefinition contentTypePartDefinition, UpdateTypePartEditorContext context)
@@ -57,17 +51,32 @@ namespace Emr.OrchardCore.CKEditor.Settings
 
             if (contentTypePartDefinition.Editor() == "CKEditor")
             {
-                var model = new HtmlBodyPartCKEditorSettingsViewModel();
+                var model = new CKEditorSettingsViewModel();
                 var settings = new HtmlBodyPartCKEditorSettings();
 
-                await context.Updater.TryUpdateModelAsync(model, Prefix, m => m.SelectedConfigurationName);
+                await context.Updater.TryUpdateModelAsync(model, Prefix);
 
-                settings.ConfigurationName = model.SelectedConfigurationName;
+                model.Options = FormatJson(model.Options);
 
-                context.Builder.WithSettings(settings);
+                if (!model.Options.IsJson())
+                {
+                    context.Updater.ModelState.AddModelError(Prefix + "." + nameof(CKEditorSettingsViewModel.Options), S["The options are written in an incorrect format."]);
+                }
+                else
+                {
+                    settings.InsertMediaWithUrl = model.InsertMediaWithUrl;
+                    settings.Options = model.Options;
+                    context.Builder.WithSettings(settings);
+                }
             }
 
-            return Edit(contentTypePartDefinition);
+            return Edit(contentTypePartDefinition, context.Updater);
+        }
+
+        private static string FormatJson(string json)
+        {
+            var jObject = JObject.Parse(json);
+            return jObject.ToString(Newtonsoft.Json.Formatting.Indented);
         }
     }
 }

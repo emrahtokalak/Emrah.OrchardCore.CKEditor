@@ -2,6 +2,6 @@ namespace Emr.OrchardCore.CKEditor.Settings
 {
     public class HtmlFieldCKEditorSettings
     {
-        public string ConfigurationName { get; set; }
+        public string Options { get; set; }
     }
 }
