@@ -4,8 +4,10 @@
   "description": "Insert media from the orchard core asset library in ckeditor",
   "main": "src/ckeditor-orchardcore-media.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
+        "build": "webpack",
+        "develop": "webpack --watch",
+        "start": "npm install && npm run develop"
+    },
   "keywords": [
     "ckeditor5",
     "orchardcore",
