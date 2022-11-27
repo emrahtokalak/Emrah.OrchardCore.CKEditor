@@ -1,13 +1,13 @@
 [
   {
     "inputs": [
-      "Assets/ckeditor-orchardcore-media/src/orchardcore-media.js"
+      "Assets/ckeditor-orchardcore-media/src/ckeditor-orchardcore-media.js"
     ],
     "output": "wwwroot/Scripts/ckeditor-orchardcore-media.js"
   },
   {
     "inputs": [
-      "Assets/ckeditor-orchardcore-shortcodes/src/orchardcore-shortcodes.js"
+      "Assets/ckeditor-orchardcore-shortcodes/src/ckeditor-orchardcore-shortcodes.js"
     ],
     "output": "wwwroot/Scripts/ckeditor-orchardcore-shortcodes.js"
   }
