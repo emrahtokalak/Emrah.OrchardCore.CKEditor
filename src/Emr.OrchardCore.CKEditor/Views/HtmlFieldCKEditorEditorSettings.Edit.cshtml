@@ -10,8 +10,8 @@
     </div>
     <div class="mb-3 row">
         <div class="col-large">
-            <label asp-for="Options">@T["Enter the editor options"]</label>
-            <span class="hint"><a href="https://alex-d.github.io/Trumbowyg/documentation/#button-pane" target="_blank">@T["Documentation for options"]</a></span>
+            <label asp-for="Options">@T["Enter the CKEditor 5 configuration options"]</label>
+            <span class="hint"><a href="https://ckeditor.com/docs/ckeditor5/latest/installation/getting-started/configuration.html" target="_blank">@T["Documentation for configuration options"]</a></span>
             <textarea asp-for="Options" class="form-control" autofocus="autofocus"></textarea>
         </div>
     </div>
@@ -34,15 +34,8 @@
 @{
     if (string.IsNullOrEmpty(Model.Options))
     {
-        string fullOptions = @"{
-        toolbar: [ 'heading', '|', 'bold', 'italic', 'link', 'bulletedList', 'numberedList', 'blockQuote' ],
-        heading: {
-            options: [
-                { model: 'paragraph', title: 'Paragraph', class: 'ck-heading_paragraph' },
-                { model: 'heading1', view: 'h1', title: 'Heading 1', class: 'ck-heading_heading1' },
-                { model: 'heading2', view: 'h2', title: 'Heading 2', class: 'ck-heading_heading2' }
-            ]
-        }";
+        string fullOptions = @"
+        ";
 <text>editor.setValue(`@Html.Raw(fullOptions)`);
         </text>
     }
