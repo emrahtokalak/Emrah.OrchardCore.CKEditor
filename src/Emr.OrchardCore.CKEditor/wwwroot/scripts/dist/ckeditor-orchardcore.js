@@ -11083,4 +11083,4 @@ class InsertOrchardCoreMedia extends _ckeditor_ckeditor5_core_src_plugin__WEBPAC
 
 /******/ })()
 ;
-//# sourceMappingURL=main.js.map
+//# sourceMappingURL=ckeditor-orchardcore.js.map

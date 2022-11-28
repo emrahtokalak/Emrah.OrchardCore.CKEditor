@@ -1,14 +1,14 @@
-// Generated using webpack-cli https://github.com/webpack/webpack-cli
+'use strict';
 
 const path = require('path');
-let { styles } = require('@ckeditor/ckeditor5-dev-utils');
+const { styles } = require('@ckeditor/ckeditor5-dev-utils');
 const isProduction = process.env.NODE_ENV == 'production';
 
 
 const config = {
     entry: './assets/ckeditor-orchardcore-media.js',
     output: {
-        filename: "[name].js",
+        filename: "ckeditor-orchardcore.js",
         path: path.resolve(__dirname, 'wwwroot/scripts/dist'),
     },
     devServer: {
@@ -22,49 +22,44 @@ const config = {
     module: {
         rules: [
             {
-                test: /\.(js|jsx)$/i,
-                loader: 'babel-loader',
-            },
-            {
-                test: /\.(eot|svg|ttf|woff|woff2|png|jpg|gif)$/i,
-                type: 'asset',
-            },
-            {
-                test: /ckeditor5-[^/\\]+[/\\]theme[/\\].+\.css$/,
-                use: [
-                    'style-loader',
-                    { loader: 'style-loader' },
-                    {
-                        loader: 'css-loader',
-                        options: {
-                            modules: true,
-                        },
-                    },
-                    { loader: 'sass-loader' },
-                ]
-            },
-            {
                 test: /ckeditor5-[^/\\]+[/\\]theme[/\\]icons[/\\][^/\\]+\.svg$/,
-                loader: 'raw-loader',
-            },
-            // {
-            //     test: /\.css$/,
-            //     use: [
-            //         { loader: 'style-loader' },
-            //         {
-            //             loader: 'css-loader',
-            //             options: {
-            //                 modules: true,
-            //             },
-            //         },
-            //         { loader: 'sass-loader' },
-            //     ],
-            // }
 
-            // Add your rules for custom modules here
-            // Learn more about loaders from https://webpack.js.org/loaders/
-        ],
+                use: ['raw-loader']
+            },
+            {
+                test: [/ckeditor5-[^/\\]+[/\\]theme[/\\].+\.css$/, /\.css$/],
+
+                use: [
+                    {
+                        loader: 'style-loader',
+                        options: {
+                            injectType: 'singletonStyleTag',
+                            attributes: {
+                                'data-cke': true
+                            }
+                        }
+                    },
+                    'css-loader',
+                    {
+                        loader: 'postcss-loader',
+                        options: {
+                            postcssOptions: styles.getPostCssConfig({
+                                themeImporter: {
+                                    themePath: require.resolve('@ckeditor/ckeditor5-theme-lark')
+                                },
+                                minify: true
+                            })
+                        }
+                    }
+                ]
+            }
+        ]
     },
+    // Useful for debugging.
+    devtool: 'source-map',
+
+    // By default webpack logs warnings if the bundle is bigger than 200kb.
+    performance: { hints: false }
 };
 
 module.exports = () => {
