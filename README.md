@@ -15,4 +15,5 @@ npm run build
 ```
 This will create a custom build in `~/wwwroot/scripts/ckeditor-classic-orchardcore` directory.\
 If you wish to change filename or output directory you need to update `webpack.config.js`.
-After that you need to update `HtmlBodyPart-CKEditor.Edit.cshtml` and `HtmlField-CKEditor.Edit.cshtml` files with correct file path.
+After that you need to update [HtmlBodyPart-CKEditor.Edit.cshtml](./src/Emr.OrchardCore.CKEditor/Views/HtmlBodyPart-CKEditor.Edit.cshtml) and
+[HtmlField-CKEditor.Edit.cshtml](./src/Emr.OrchardCore.CKEditor/Views/HtmlField-CKEditor.Edit.cshtml) files with correct file path.
