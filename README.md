@@ -4,6 +4,8 @@ Based on https://github.com/ThisNetWorks/ThisNetWorks.OrchardCore.CKEditor proje
 
 ## Development
 ### How to build CKEditor.js
+In order to build CKEditor you need [Node.js](https://nodejs.org/en/download/).
+Packages are tested with `npm@6.14.17` and `node@14.21.1`
 
 ```bash
 # Navigate to main folder where ckeditor config is
