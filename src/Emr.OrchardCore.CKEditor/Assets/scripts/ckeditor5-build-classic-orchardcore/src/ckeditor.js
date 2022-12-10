@@ -11,6 +11,11 @@ import Essentials from '@ckeditor/ckeditor5-essentials/src/essentials';
 import Autoformat from '@ckeditor/ckeditor5-autoformat/src/autoformat';
 import Bold from '@ckeditor/ckeditor5-basic-styles/src/bold';
 import Italic from '@ckeditor/ckeditor5-basic-styles/src/italic';
+import Underline from '@ckeditor/ckeditor5-basic-styles/src/underline';
+import Strikethrough from '@ckeditor/ckeditor5-basic-styles/src/strikethrough';
+import Code from '@ckeditor/ckeditor5-basic-styles/src/code';
+import Subscript from '@ckeditor/ckeditor5-basic-styles/src/subscript';
+import Superscript from '@ckeditor/ckeditor5-basic-styles/src/superscript';
 import BlockQuote from '@ckeditor/ckeditor5-block-quote/src/blockquote';
 import CKFinder from '@ckeditor/ckeditor5-ckfinder/src/ckfinder';
 import Heading from '@ckeditor/ckeditor5-heading/src/heading';
@@ -37,8 +42,7 @@ import ImageCaption from '@ckeditor/ckeditor5-image/src/imagecaption';
 import ImageStyle from '@ckeditor/ckeditor5-image/src/imagestyle';
 import ImageResize from '@ckeditor/ckeditor5-image/src/imageresize';
 import LinkImage from '@ckeditor/ckeditor5-link/src/linkimage';
-
-
+import Font from '@ckeditor/ckeditor5-font/src/font';
 
 // The Orchard Core media / asset plugin to include.
 import InsertAsset from '../../ckeditor5-orchardcore-media/src/orchardcore-media';
@@ -52,8 +56,14 @@ export default class ClassicEditor extends ClassicEditorBase { }
 ClassicEditor.builtinPlugins = [
 	Essentials,
 	Autoformat,
+	Font,
 	Bold,
 	Italic,
+	Underline,
+	Strikethrough,
+	Code,
+	Subscript,
+	Superscript,
 	BlockQuote,
 	CKFinder,
 	Heading,
@@ -75,13 +85,11 @@ ClassicEditor.builtinPlugins = [
 	SpecialCharacters,
 	WordCount,
 	Image,
-
 	ImageToolbar,
 	ImageCaption,
 	ImageStyle,
 	ImageResize,
 	LinkImage,
-
 	InsertAsset,
 	InsertShortcode
 ];
@@ -92,25 +100,61 @@ ClassicEditor.defaultConfig = {
 		items: [
 			'heading',
 			'|',
-			'insertShortcode',
-			'insertImage',
-			'blockQuote',
-			'|',
-			'wproofreader', 'findAndReplace', 'selectAll',
-			'|',
 			'removeFormat', 'bold', 'italic', 'strikethrough', 'underline', 'code', 'subscript', 'superscript',
+			'|',
+			'highlight', 'fontSize', 'fontFamily', 'fontColor', 'fontBackgroundColor',
+			'|',
+			'outdent', 'indent', 'alignment',
 			'|',
 			'bulletedList', 'numberedList', 'todoList',
 			'|',
-			'outdent', 'indent', 'alignment',
+			'insertShortcode',
+			'insertImage',
+			'|',
+			'selectAll',
 			'|',
 			'specialCharacters', 'horizontalLine', 'pageBreak',
 			'|',
 			'-',
-			'highlight', 'fontSize', 'fontFamily', 'fontColor', 'fontBackgroundColor',
-			'|',
 			'link', 'blockQuote', 'insertTable', 'uploadImage', 'ckbox', 'mediaEmbed', 'codeBlock', 'htmlEmbed'
 		],
+	},
+	htmlEmbed: {
+		showPreviews: true
+	},
+	image: {
+		styles: [
+			'alignCenter',
+			'alignLeft',
+			'alignRight'
+		],
+		resizeOptions: [
+			{
+				name: 'resizeImage:original',
+				label: 'Original',
+				value: null
+			},
+			{
+				name: 'resizeImage:50',
+				label: '50%',
+				value: '50'
+			},
+			{
+				name: 'resizeImage:75',
+				label: '75%',
+				value: '75'
+			}
+		],
+		toolbar: [
+			'imageTextAlternative', 'toggleImageCaption', '|',
+			'imageStyle:inline', 'imageStyle:wrapText', 'imageStyle:breakText', 'imageStyle:side', '|',
+			'resizeImage'
+		],
+		insert: {
+			integrations: [
+				'insertImageViaUrl'
+			]
+		}
 	},
 	table: {
 		contentToolbar: [

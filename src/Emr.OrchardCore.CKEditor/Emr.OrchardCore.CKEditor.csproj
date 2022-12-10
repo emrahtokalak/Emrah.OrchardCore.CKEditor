@@ -8,7 +8,7 @@
     <PackageId>Emr.OrchardCore.CKEditor</PackageId>
     <Title>CKEditor for OrchadCore</Title>
     <Authors>Emrah Tokalak</Authors>
-    <Description>CKEditor implemantation of OrchardCore</Description>
+    <Description>CKEditor implementation of OrchardCore</Description>
     <PackageTags>orchardcore;ckeditor</PackageTags>
     <RepositoryUrl>https://github.com/emrahtokalak/Emr.OrchardCore.CKEditor</RepositoryUrl>
     <PackageProjectUrl>https://github.com/emrahtokalak/Emr.OrchardCore.CKEditor</PackageProjectUrl>

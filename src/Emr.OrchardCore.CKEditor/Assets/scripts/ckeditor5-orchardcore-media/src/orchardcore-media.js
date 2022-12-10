@@ -2,7 +2,6 @@ import Plugin from '@ckeditor/ckeditor5-core/src/plugin';
 import imageIcon from '@ckeditor/ckeditor5-core/theme/icons/image.svg';
 import ButtonView from '@ckeditor/ckeditor5-ui/src/button/buttonview';
 
-
 export default class InsertOrchardCoreMedia extends Plugin {
     init() {
         const editor = this.editor;
