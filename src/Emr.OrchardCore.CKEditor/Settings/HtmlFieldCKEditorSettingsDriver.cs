@@ -1,5 +1,3 @@
-using System;
-using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.Extensions.Localization;
@@ -8,7 +6,6 @@ using OrchardCore.ContentTypes.Editors;
 using OrchardCore.DisplayManagement.Views;
 using Emr.OrchardCore.CKEditor.ViewModels;
 using OrchardCore.ContentFields.Fields;
-using OrchardCore.Mvc.Utilities;
 
 namespace Emr.OrchardCore.CKEditor.Settings
 {
@@ -42,12 +39,6 @@ namespace Emr.OrchardCore.CKEditor.Settings
 
                 await context.Updater.TryUpdateModelAsync(model, Prefix);
 
-                //Todo: Check json validation
-                // model.Options = FormatJson(model.Options);
-                // if (!model.Options.IsJson())
-                // {
-                //     context.Updater.ModelState.AddModelError(Prefix + "." + nameof(CKEditorSettingsViewModel.Options), S["The options are written in an incorrect format."]);
-                // }
                 settings.InsertMediaWithUrl = model.InsertMediaWithUrl;
                 settings.Options = model.Options;
                 context.Builder.WithSettings(settings);

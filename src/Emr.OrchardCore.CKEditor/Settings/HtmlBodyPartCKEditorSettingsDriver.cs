@@ -56,12 +56,6 @@ namespace Emr.OrchardCore.CKEditor.Settings
 
                 await context.Updater.TryUpdateModelAsync(model, Prefix);
 
-                //Todo: Check json validation
-                // model.Options = FormatJson(model.Options);
-                // if (!model.Options.IsJson())
-                // {
-                //     context.Updater.ModelState.AddModelError(Prefix + "." + nameof(CKEditorSettingsViewModel.Options), S["The options are written in an incorrect format."]);
-                // }
                 settings.InsertMediaWithUrl = model.InsertMediaWithUrl;
                 settings.Options = model.Options;
                 context.Builder.WithSettings(settings);
