@@ -1,9 +1,9 @@
 using Microsoft.Extensions.DependencyInjection;
 using OrchardCore.ContentTypes.Editors;
 using OrchardCore.Modules;
-using Emr.OrchardCore.CKEditor.Settings;
+using Emrah.OrchardCore.CKEditor.Settings;
 
-namespace Emr.OrchardCore.CKEditor
+namespace Emrah.OrchardCore.CKEditor
 {
     public class Startup : StartupBase
     {

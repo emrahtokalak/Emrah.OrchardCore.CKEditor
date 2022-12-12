@@ -1,6 +1,6 @@
-namespace Emr.OrchardCore.CKEditor.Settings
+namespace Emrah.OrchardCore.CKEditor.Settings
 {
-    public class HtmlBodyPartCKEditorSettings
+    public class HtmlFieldCKEditorSettings
     {
         public string Options { get; set; }
         public bool InsertMediaWithUrl { get; set; }

@@ -1,6 +1,6 @@
 using OrchardCore.DisplayManagement.Descriptors;
 
-namespace Emr.OrchardCore.CKEditor.Shapes
+namespace Emrah.OrchardCore.CKEditor.Shapes
 {
     public class HtmlMediaShapes : IShapeTableProvider
     {

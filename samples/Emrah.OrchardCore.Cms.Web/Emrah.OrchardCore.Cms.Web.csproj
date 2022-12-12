@@ -24,7 +24,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\src\Emr.OrchardCore.CKEditor\Emr.OrchardCore.CKEditor.csproj" />
+    <ProjectReference Include="..\..\src\Emrah.OrchardCore.CKEditor\Emrah.OrchardCore.CKEditor.csproj" />
   </ItemGroup>
 
 	<ItemGroup>

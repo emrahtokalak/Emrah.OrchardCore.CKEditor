@@ -1,8 +1,8 @@
 {
-  "name": "ckeditor5-orchardcore-shortcodes",
+  "name": "ckeditor5-orchardcore-media",
   "version": "1.0.0",
-  "description": "Insert a shortcode into ckeditor",
-  "main": "src/orchardcore-shortcodes.js",
+  "description": "Insert media from the orchard core asset library in ckeditor",
+  "main": "src/orchardcore-media.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -20,7 +20,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/emrahtokalak/Emr.OrchardCore.CKEditor.git"
+    "url": "git+https://github.com/emrahtokalak/Emrah.OrchardCore.CKEditor.git"
   },
   "author": "Emrah Tokalak",
   "license": "BSD-3-Clause"

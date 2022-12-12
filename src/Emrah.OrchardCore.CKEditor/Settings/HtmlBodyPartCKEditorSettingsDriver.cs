@@ -7,12 +7,12 @@ using OrchardCore.ContentManagement.Metadata.Models;
 using OrchardCore.ContentTypes.Editors;
 using OrchardCore.DisplayManagement.ModelBinding;
 using OrchardCore.DisplayManagement.Views;
-using Emr.OrchardCore.CKEditor.ViewModels;
+using Emrah.OrchardCore.CKEditor.ViewModels;
 using OrchardCore.Html.Models;
 using OrchardCore.Mvc.Utilities;
 using Newtonsoft.Json.Linq;
 
-namespace Emr.OrchardCore.CKEditor.Settings
+namespace Emrah.OrchardCore.CKEditor.Settings
 {
     public class HtmlBodyPartCKEditorSettingsDriver : ContentTypePartDefinitionDisplayDriver<HtmlBodyPart>
     {

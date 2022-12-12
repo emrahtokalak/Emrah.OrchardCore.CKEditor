@@ -4,14 +4,14 @@
     <TargetFramework>net6.0</TargetFramework>
     <AddRazorSupportForMvc>true</AddRazorSupportForMvc>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Version>1.0.0</Version>
-    <PackageId>Etk.OrchardCore.CKEditor</PackageId>
+    <Version>1.5.0</Version>
+    <PackageId>Emrah.OrchardCore.CKEditor</PackageId>
     <Title>CKEditor for OrchadCore</Title>
     <Authors>Emrah Tokalak</Authors>
     <Description>CKEditor implementation of OrchardCore</Description>
     <PackageTags>orchardcore;ckeditor</PackageTags>
-    <RepositoryUrl>https://github.com/emrahtokalak/Emr.OrchardCore.CKEditor</RepositoryUrl>
-    <PackageProjectUrl>https://github.com/emrahtokalak/Emr.OrchardCore.CKEditor</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/emrahtokalak/Emrah.OrchardCore.CKEditor</RepositoryUrl>
+    <PackageProjectUrl>https://github.com/emrahtokalak/Emrah.OrchardCore.CKEditor</PackageProjectUrl>
   </PropertyGroup>
 
   <ItemGroup>

@@ -1,4 +1,4 @@
-namespace Emr.OrchardCore.CKEditor.ViewModels
+namespace Emrah.OrchardCore.CKEditor.ViewModels
 {
     public class CKEditorSettingsViewModel
     {

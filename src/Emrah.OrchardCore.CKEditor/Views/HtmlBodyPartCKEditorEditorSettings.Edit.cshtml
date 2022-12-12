@@ -1,5 +1,4 @@
-@model Emr.OrchardCore.CKEditor.ViewModels.CKEditorSettingsViewModel
-
+@model Emrah.OrchardCore.CKEditor.ViewModels.CKEditorSettingsViewModel
 <div id="@Html.IdFor(m => m)" class="type-part-editor type-part-editor-ckeditor">
     <div class="mb-3">
         <div class="form-check">
@@ -27,15 +26,13 @@
         var editor = CodeMirror.fromTextArea(optionsTextArea, {
             autoRefresh: true,
             lineNumbers: true,
-            lineWrapping: true,
             matchBrackets: true,
             mode: { name: "javascript" }
     });
 @{
     if (string.IsNullOrEmpty(Model.Options))
     {
-        string fullOptions = @"
-        ";
+        string fullOptions = @" ";
 <text>editor.setValue(`@Html.Raw(fullOptions)`);
         </text>
     }
