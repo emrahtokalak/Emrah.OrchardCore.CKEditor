@@ -9,7 +9,7 @@
             "command": "dotnet",
             "args": [
                 "build",
-                "${workspaceFolder}/samples/Emr.OrchardCore.Cms.Web",
+                "${workspaceFolder}/samples/Emrah.OrchardCore.Cms.Web",
                 "-c",
                 "Debug",
                 "-f",
@@ -23,7 +23,7 @@
             "command": "dotnet",
             "args": [
                 "build",
-                "${workspaceFolder}/samples/Emr.OrchardCore.Cms.Web",
+                "${workspaceFolder}/samples/Emrah.OrchardCore.Cms.Web",
                 "-c",
                 "Release",
                 "-f",
