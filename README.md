@@ -1,8 +1,20 @@
 # Emr.OrchardCore.CKEditor
 
+Module for [Orchard Core](https://github.com/OrchardCMS/OrchardCore). CKEditor 5 is an ultra-modern JavaScript rich text editor. 
+
+## Nuget
+
+[![NuGet](https://img.shields.io/nuget/v/Emr.OrchardCore.CKEditor.svg)](https://www.nuget.org/packages/Emr.OrchardCore.CKEditor)
+
+## Orchard Core Reference
+
+This module is referencing a stable build of Orchard Core ([`1.5.0`](https://www.nuget.org/packages/OrchardCore.Module.Targets/1.5.0)).
+
+## Credit
+
 Based on https://github.com/ThisNetWorks/ThisNetWorks.OrchardCore.CKEditor project. Thanks to @deanmarcussen
 
-## Development
+## Compiling Assets
 ### How to build CKEditor.js
 In order to build CKEditor you need [Node.js](https://nodejs.org/en/download/).
 Packages are tested with `npm@6.14.17` and `node@14.21.1`
