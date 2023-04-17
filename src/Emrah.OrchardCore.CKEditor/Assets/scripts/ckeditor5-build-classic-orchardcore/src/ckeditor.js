@@ -43,6 +43,8 @@ import ImageStyle from '@ckeditor/ckeditor5-image/src/imagestyle';
 import ImageResize from '@ckeditor/ckeditor5-image/src/imageresize';
 import LinkImage from '@ckeditor/ckeditor5-link/src/linkimage';
 import Font from '@ckeditor/ckeditor5-font/src/font';
+import SourceEditing from '@ckeditor/ckeditor5-source-editing/src/sourceediting';
+import UploadAdapterPlugin from '@ckeditor/ckeditor5-adapter-ckfinder/src/uploadadapter';
 
 // The Orchard Core media / asset plugin to include.
 import InsertAsset from '../../ckeditor5-orchardcore-media/src/orchardcore-media';
@@ -91,7 +93,9 @@ ClassicEditor.builtinPlugins = [
 	ImageResize,
 	LinkImage,
 	InsertAsset,
-	InsertShortcode
+	InsertShortcode,
+	SourceEditing,
+	UploadAdapterPlugin
 ];
 
 // Editor configuration.
@@ -116,7 +120,9 @@ ClassicEditor.defaultConfig = {
 			'specialCharacters', 'horizontalLine', 'pageBreak',
 			'|',
 			'-',
-			'link', 'blockQuote', 'insertTable', 'uploadImage', 'ckbox', 'mediaEmbed', 'codeBlock', 'htmlEmbed'
+			'link', 'blockQuote', 'insertTable', 'uploadImage', 'ckbox', 'mediaEmbed', 'codeBlock', 'htmlEmbed',
+			'|',
+			'sourceEditing'
 		],
 	},
 	htmlEmbed: {
