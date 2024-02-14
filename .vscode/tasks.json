@@ -4,7 +4,7 @@
     "version": "2.0.0",
     "tasks": [
         {
-            "label": "dotnet build (debug) - net6.0",
+            "label": "dotnet build (debug) - net8.0",
             "type": "shell",
             "command": "dotnet",
             "args": [
@@ -13,12 +13,12 @@
                 "-c",
                 "Debug",
                 "-f",
-                "net6.0"
+                "net8.0"
             ],
             "problemMatcher": "$msCompile"
         },
         {
-            "label": "dotnet build (release) - net6.0",
+            "label": "dotnet build (release) - net8.0",
             "type": "shell",
             "command": "dotnet",
             "args": [
@@ -27,7 +27,7 @@
                 "-c",
                 "Release",
                 "-f",
-                "net6.0"
+                "net8.0"
             ],
             "problemMatcher": "$msCompile"
         }

@@ -1,10 +1,10 @@
 <Project Sdk="Microsoft.NET.Sdk.Razor">
 
   <PropertyGroup>
-    <TargetFramework>net6.0</TargetFramework>
+    <TargetFramework>net8.0</TargetFramework>
     <AddRazorSupportForMvc>true</AddRazorSupportForMvc>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Version>1.5.1</Version>
+    <Version>1.8.0</Version>
     <PackageId>Emrah.OrchardCore.CKEditor</PackageId>
     <Title>CKEditor for OrchadCore</Title>
     <Authors>Emrah Tokalak</Authors>
@@ -15,18 +15,18 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="OrchardCore.ContentManagement" Version="1.5.0" />
-    <PackageReference Include="OrchardCore.ContentFields " Version="1.5.0" />
-    <PackageReference Include="OrchardCore.ContentManagement.Display" Version="1.5.0" />
-    <PackageReference Include="OrchardCore.ContentTypes" Version="1.5.0" />
-    <PackageReference Include="OrchardCore.Html" Version="1.5.0" />
-    <PackageReference Include="OrchardCore.DisplayManagement" Version="1.5.0" />
-    <PackageReference Include="OrchardCore.Indexing.Abstractions" Version="1.5.0" />
-    <PackageReference Include="OrchardCore.Search.Lucene" Version="1.5.0" />
-    <PackageReference Include="OrchardCore.Navigation" Version="1.5.0" />
-    <PackageReference Include="OrchardCore.Queries.Abstractions" Version="1.5.0" />
-    <PackageReference Include="OrchardCore.ResourceManagement" Version="1.5.0" />
-    <PackageReference Include="OrchardCore.Module.Targets" Version="1.5.0" />
+    <PackageReference Include="OrchardCore.ContentManagement" Version="1.8.2" />
+    <PackageReference Include="OrchardCore.ContentFields " Version="1.8.2" />
+    <PackageReference Include="OrchardCore.ContentManagement.Display" Version="1.8.2" />
+    <PackageReference Include="OrchardCore.ContentTypes" Version="1.8.2" />
+    <PackageReference Include="OrchardCore.Html" Version="1.8.2" />
+    <PackageReference Include="OrchardCore.DisplayManagement" Version="1.8.2" />
+    <PackageReference Include="OrchardCore.Indexing.Abstractions" Version="1.8.2" />
+    <PackageReference Include="OrchardCore.Search.Lucene" Version="1.8.2" />
+    <PackageReference Include="OrchardCore.Navigation" Version="1.8.2" />
+    <PackageReference Include="OrchardCore.Queries.Abstractions" Version="1.8.2" />
+    <PackageReference Include="OrchardCore.ResourceManagement" Version="1.8.2" />
+    <PackageReference Include="OrchardCore.Module.Targets" Version="1.8.2" />
   </ItemGroup>
 
   <ItemGroup>

@@ -22,7 +22,7 @@ builder.Host.UseSerilog(logger);
 
 var app = builder.Build();
 
-builder.WebHost.UseUrls("http://localhost:5001");
+builder.WebHost.UseUrls("https://localhost:5001");
 
 if (app.Environment.IsDevelopment())
 {
